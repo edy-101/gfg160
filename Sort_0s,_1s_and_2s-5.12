@@ -1,0 +1,20 @@
+class Solution:
+    def sort012(self, arr):
+        return arr.sort()
+        
+
+
+#{ 
+ # Driver Code Starts.
+def main():
+    t = int(input().strip())
+    ob = Solution()
+    while t > 0:
+        t -= 1
+        arr = list(map(int, input().strip().split()))  
+        ob.sort012(arr) 
+        print(' '.join(map(str, arr)))  
+        print("~")
+if __name__ == "__main__":
+    main()
+# } Driver Code Ends
