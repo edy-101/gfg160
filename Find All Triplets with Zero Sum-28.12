@@ -1,0 +1,46 @@
+import math
+from collections import defaultdict
+
+#User function Template for python3
+class Solution:
+    def findTriplets(self, arr):
+        mem = defaultdict(set)
+        ans = []
+        for ind, val in enumerate(arr):
+            mem[val].add(ind)
+
+        for i in range(len(arr)-2):
+            for j in range(i+1, len(arr)-1):
+                rem = -(arr[i]+arr[j])
+                if rem in mem:
+                    indicies = mem[rem]
+                    diff = {x for x in indicies if x > j}
+                    if len(diff):
+                        for target in diff:
+                            temp = [i, j, target]
+                            ans.append(temp)
+                        
+        return ans
+        
+        
+
+#{ 
+ # Driver Code Starts.
+def main():
+    T = int(input())
+    while (T > 0):
+        A = [int(x) for x in input().strip().split()]
+        ob = Solution()
+        res = ob.findTriplets(A)
+        res = sorted(res)
+        if len(res) == 0:
+            print('[]')
+        for i in range(len(res)):
+            for j in range(len(res[i])):
+                print(res[i][j], end=" ")
+            print("")
+        print('~')
+        T -= 1
+if __name__ == "__main__":
+    main()
+# } Driver Code Ends
