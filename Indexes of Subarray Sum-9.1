@@ -1,0 +1,35 @@
+#User function Template for python3
+class Solution:
+    def subarraySum(self, arr, target):
+        total = 0
+        dic = {0:0}
+        
+        for i in range(len(arr)):
+            total += arr[i]
+            
+            if total-target in dic:
+                if total - target == 0:
+                   return [1, i+1]
+                else:
+                    return [dic[total-target]+1, i+1]
+            elif total-target not in dic:
+                dic[total] = i+1    
+
+        return [-1]
+
+
+
+#{ 
+ # Driver Code Starts
+# Initial Template for Python 3
+if __name__ == '__main__':
+    tc = int(input().strip())
+    while tc > 0:
+        arr = list(map(int, input().strip().split()))
+        d = int(input().strip())
+        ob = Solution()
+        result = ob.subarraySum(arr, d)
+        print(" ".join(map(str, result)))
+        tc -= 1
+        print("~")
+# } Driver Code Ends
