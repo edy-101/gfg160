@@ -1,0 +1,40 @@
+class Solution:
+    def maxWater(self, arr):
+        n = len(arr)
+        l, r = 0, n-1
+        ma = 0
+        
+        while l<r:
+            h = min(arr[l], arr[r])
+            w = r-l
+            ma = max(ma, h*w)
+            
+            if arr[l] < arr[r]:
+                l += 1
+            else:
+                r -= 1
+        
+        return ma
+
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial template for Python 3
+import math
+
+def main():
+    t = int(input())
+    
+    while (t > 0):
+        arr = [int(x) for x in input().strip().split()]
+        obj = Solution()
+        print(obj.maxWater(arr))
+        t -= 1
+        print("~")
+        
+if __name__ == "__main__":
+    main()
+
+# } Driver Code Ends
