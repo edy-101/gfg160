@@ -1,0 +1,35 @@
+# User function Template for python3
+class Solution:
+    def longestSubarray(self, arr, k):  
+        # code here
+        ps = 0
+        ml = 0
+        sm = {}
+        
+        for i, n in enumerate(arr):
+            ps += n
+            if ps == k:
+                ml = i+1
+            if (ps - k) in sm:
+                ml = max(ml, i - sm[ps-k])
+            if ps not in sm:
+                sm[ps] = i
+
+        return ml
+
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+if __name__ == '__main__':
+    tc = int(input().strip())
+    while tc > 0:
+        arr = list(map(int, input().strip().split()))
+        k = int(input().strip())
+        ob = Solution()
+        print(ob.longestSubarray(arr, k))
+        tc -= 1
+        print("~")
+# } Driver Code Ends
