@@ -1,0 +1,34 @@
+class Solution:
+    def maxLen(self, arr):
+        # code here
+        n = len(arr)
+        hm = {}
+        ml = 0
+        cs = 0
+
+        for i in range(n):
+            cs += -1 if arr[i] == 0 else 1
+
+            if cs==0:
+                ml = i+1
+
+            if cs in hm:
+                ml = max(ml, i - hm[cs])
+            else:
+                hm[cs] = i
+
+        return ml
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+t = int(input())
+for _ in range(0, t):
+    a = list(map(int, input().split()))
+    s = Solution().maxLen(a)
+    print(s)
+
+# } Driver Code Ends
