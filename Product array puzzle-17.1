@@ -1,0 +1,40 @@
+#User function Template for python3
+class Solution:
+    def productExceptSelf(self, arr):
+        n = len(arr)
+        prod = 1
+        zero = 0
+        
+        for num in arr:
+            if num != 0:
+                prod *= num
+            else:
+                zero += 1
+
+        res = []
+        for i in range(n):
+            if zero>1:
+                res.append(0)
+            elif zero == 1:
+                if arr[i] == 0:
+                    res.append(prod)
+                else:
+                    res.append(0)
+            else:
+                res.append(prod//arr[i])
+
+        return res
+
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        arr = [int(x) for x in input().split()]
+        ans = Solution().productExceptSelf(arr)
+        print(*ans)
+        print("~")
+# } Driver Code Ends
